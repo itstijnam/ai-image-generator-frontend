@@ -47,7 +47,14 @@ function CreatePost() {
   return (
     <Container>
       <Wrapper>
-        <GenerateImageForm post={post} setPost={setPost} createPostLoading={createPostLoading} generateImageLoading={generateImageLoading} />
+        <GenerateImageForm 
+          post={post} 
+          setPost={setPost} 
+          createPostLoading={createPostLoading} 
+          setGenerateImageLoading={setGenerateImageLoading}
+          generateImageLoading={generateImageLoading} 
+          setCreatePostLoading={setCreatePostLoading} 
+        />
         <GeneratedImageCard src={post?.photo} loading={generateImageLoading} />
       </Wrapper>
     </Container>

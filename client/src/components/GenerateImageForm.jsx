@@ -47,7 +47,15 @@ const Actions = styled.div`
 `;
 
 
-function GenerateImageForm({ post, setPost, createPostLoading, generateImageLoading }) {
+function GenerateImageForm({ post, setPost, createPostLoading, generateImageLoading, setGenerateImageLoading, setCreatePostLoading }) {
+
+  const generateImageFun = ()=>{
+    setGenerateImageLoading(!generateImageLoading);
+  }
+
+  const createPostFun = ()=>{
+    setCreatePostLoading(!createPostLoading)
+  }
 
   return (
     <Form>
@@ -66,10 +74,15 @@ function GenerateImageForm({ post, setPost, createPostLoading, generateImageLoad
         />
       </Body>
       <Actions>
-        <Button text={`Generate Image`} flex leftIcon={< AutoAwesome />} isDisabled={post?.prompt === ""} />
+        <Button text={`Generate Image`} flex leftIcon={< AutoAwesome />}
+          isLoading={generateImageLoading}
+          isDisabled={post?.prompt === ""} 
+          onClick={ ()=>generateImageFun() }
+        />
         <Button text={`Post Image`} flex type={`secondary`} leftIcon={< CreateRounded />} 
           isLoading={createPostLoading}
           isDisabled={post?.name === "" || post?.prompt === "" || post?.photo === ""}
+          onClick={ ()=>createPostFun() }
         />
       </Actions>
     </Form>
